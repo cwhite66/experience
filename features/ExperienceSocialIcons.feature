@@ -5,186 +5,55 @@ Verifying comment tool on asset pages
 Background:
 When I visit an Experience asset page
 
-# Verify social train appears assets
+# Verify social train appears on assets
 @story @gallery @video @share-train
   Scenario: Social Share Train: Buttons viewable
-    Given that I am on a experience story page
-    Then I should see a share button for "Facebook"
-    And I should see a share button for "Twitter"
-    And I should see a share button for "Email"
-    And I should see a share button for "Comments"
-    And I should see a share button for "Print"
-    And I should see a share button for "Google"
-    And I should see a share button for "LinkedIn"
-    And I should see a share button for "Pinterest"
+    Given that I am on an experience asset page
+    When I click on "<section_href>"
+    Then I should see the share buttons "<button_name>"
 
-# Verify each social media button opens a modal window and shares correct url on story assets
-@story @share-train
-  Scenario: Social Share Train: Facebook button opens share window
-    Given that I am on a experience story page
-    And I click on the "Facebook" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
+    Examples:
+    | section_href  |  button_name                           |
+    |    Facebook   |   .util-bar-btn-facebook               |
+    |    Twitter    |   .util-bar-btn-twitter                |
+    |    Email      |   .util-bar-btn-email                  |
+    |    Comments   |   .util-bar-btn-comments               |
+    |    Print      |   .util-bar-btn-print                  |
+    |    Google     |   .util-bar-flyout-nav-btn-googleplus  |
+    |    LinkedIn   |   .util-bar-flyout-nav-btn-linkedin    |
+    |    Pinterest  |   .util-bar-flyout-nav-btn-pinterest   |
 
-@story @share-train
-  Scenario: Social Share Train: Twitter link opens share window
-    Given that I am on a experience story page
-    And I click on the "Twitter" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
 
-@story @share-train
+# Verify each social media button opens a modal window and shares correct url on assets
+@story @gallery @video @share-train
+Scenario: Social Share Train: Verify social media opens and correct url is shared
+  Given I am on "<url>"
+    And I have the visited the following pages:
+    Examples:
+    | name    | url
+    | gallery | /picture-gallery/best-beaches/2015/02/12/8-secluded-beaches-to-visit-in-february/23322333/ |
+    | video   | /videos/ |
+    | story   | /story/romantic-beach-vacations/2015/02/12/romantic-valentines-day-beaches/23191007/ |
+  When I click "<button name>"
+  Then the "corresponding share page" should open in a new window
+    And the "url" matches the "shared url"
+
+@email @share-train
   Scenario: Social Share Train: Email button opens share window
-    Given that I am on a experience story page
+    Given that I am on an experience "<url>"
     And I click on the "Email" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
+    Then the email window should open
 
-@story @share-train
+@comment @share-train
   Scenario: Social Share Train: Comment button goes to comment tool window at bottom of page
-    Given that I am on a experience story page
+    Given that I am on an experience "<url>"
     And I click on the "Comment" share button
-    Then the "comment tool box" appears
+    Then the "comment form" appears
       And I can add a comment
+      And I can click the comment button
 
-@story @share-train
+@print @share-train
   Scenario: Social Share Train: Print button opens share window
-    Given that I am on a experience story page
-    And I click on the "Email" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@story @share-train
-  Scenario: Social Share Train: Google link opens share window
-    Given that I am on a experience story page
-    And I click on the "Google" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@story @share-train
-  Scenario: Social Share Train: LinkedIn link opens share window
-    Given that I am on a experience story page
-    And I click on the "LinkedIn" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@story @share-train
-  Scenario: Social Share Train: Pinterest link opens share window
-    Given that I am on a experience story page
-    And I click on the "Pinterest" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-# Verify each social media button opens a modal window and shares correct url on gallery assets
-@gallery @share-train
-  Scenario: Social Share Train: Facebook button opens share window
-    Given that I am on a experience gallery page
-    And I click on the "Facebook" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@gallery @share-train
-  Scenario: Social Share Train: Twitter link opens share window
-    Given that I am on a experience gallery page
-    And I click on the "Twitter" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@gallery @share-train
-  Scenario: Social Share Train: Email button opens share window
-    Given that I am on a experience gallery page
-    And I click on the "Email" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@gallery @share-train
-  Scenario: Social Share Train: Comment button goes to comment tool window at bottom of page
-    Given that I am on a experience gallery page
-    And I click on the "Comment" share button
-    Then the "comment tool box" appears
-      And I can add a comment
-
-@gallery @share-train
-  Scenario: Social Share Train: Print button opens share window
-    Given that I am on a experience gallery page
-    And I click on the "Email" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@gallery @share-train
-  Scenario: Social Share Train: Google link opens share window
-    Given that I am on a experience gallery page
-    And I click on the "Google" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@gallery @share-train
-  Scenario: Social Share Train: LinkedIn link opens share window
-    Given that I am on a experience gallery page
-    And I click on the "LinkedIn" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@gallery @share-train
-  Scenario: Social Share Train: Pinterest link opens share window
-    Given that I am on a experience gallery page
-    And I click on the "Pinterest" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-# Verify each social media button opens a modal window and shares correct url on video assets
-@video @share-train
-  Scenario: Social Share Train: Facebook button opens share window
-    Given that I am on a experience video page
-    And I click on the "Facebook" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@video @share-train
-  Scenario: Social Share Train: Twitter link opens share window
-    Given that I am on a experience video page
-    And I click on the "Twitter" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@video @share-train
-  Scenario: Social Share Train: Email button opens share window
-    Given that I am on a experience video page
-    And I click on the "Email" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@video @share-train
-  Scenario: Social Share Train: Comment button goes to comment tool window at bottom of page
-    Given that I am on a experience video page
-    And I click on the "Comment" share button
-    Then the "comment tool box" appears
-      And I can add a comment
-
-@video @share-train
-  Scenario: Social Share Train: Print button opens share window
-    Given that I am on a experience video page
-    And I click on the "Email" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@video @share-train
-  Scenario: Social Share Train: Google link opens share window
-    Given that I am on a experience video page
-    And I click on the "Google" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@video @share-train
-  Scenario: Social Share Train: LinkedIn link opens share window
-    Given that I am on a experience video page
-    And I click on the "LinkedIn" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
-
-@video @share-train
-  Scenario: Social Share Train: Pinterest link opens share window
-    Given that I am on a experience video page
-    And I click on the "Pinterest" share button
-    Then the "corresponding share page" should open in a new window
-      And the "url" matches the "shared url"
+    Given that I am on an experience "<url>"
+    And I click on the "Print" share button
+    Then the print window should open
