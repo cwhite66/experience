@@ -1,3 +1,4 @@
-When(/^Go directly to "(.*?)" front$/) do |front_name|
-  visit base_url(front_name)
+
+Given(/^I am on the Experience home page$/) do
+  expect(page).to have_css(".util-bar-btn--#{section_href}")
 end
