@@ -1,4 +1,11 @@
+When(/^I visit the Experience home page$/) do
+  visit ('http://experience.usatoday.com/america/')
+end
 
-Given(/^I am on the Experience home page$/) do
-  expect(page).to have_css(".util-bar-btn--#{section_href}")
+When(/^I open the following pages (.*?)$/) do |page_url|
+  visit base_url(page_url)
+end
+
+Then(/^I should see the following buttons$/) do |button_name|
+    page.should have_selector(".exp-util-bar-btn.util-bar-btn.util-bar-btn-#{button_name}")
 end

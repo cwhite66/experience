@@ -14,7 +14,7 @@ AfterStep('@pause') do
   STDIN.getc
 end
 
-$experienceamericaweb_url = 'http://experience.usatoday.com/america/'
+$experienceamericaweb_url = 'http://experience.usatoday.com/america'
 
 def base_url(path)
   $experienceamericaweb_url + path
