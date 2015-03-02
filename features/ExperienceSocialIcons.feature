@@ -30,11 +30,23 @@ Background:
 # Click asset url and verify correct url is shared
 @story @gallery @video @share-train
 Scenario Outline: Social Share Train: Verify social media opens and correct url is shared
-  Given I click on <url>
+  Given I am on the <url>
+  When I click on the <share_button>
   Then the new window opens
     And the "url" matches the "shared url"
+    | share_button  |
+    |    .util-bar-btn-facebook   |
+    |    .util-bar-btn-twitter    |
+    |    .util-bar-btn-email      |
+    |    .util-bar-btn-comments   |
+    |    .util-bar-btn-print      |
+    |    .util-bar-flyout-nav-btn-googleplus |
+    |    .util-bar-flyout-nav-btn-linkedin   |
+    |    .util-bar-flyout-nav-btn-pinterest  |
+
+
     Examples:
-    | url  |
+    | url |
     | /picture-gallery/photo-galleries/2015/02/11/the-48-most-expensive-hotel-rooms/23236355/ |
     | /videos//videos/2014/12/10/20190387/ |
     | /story/theme-parks/2015/02/19/12-free-things-to-do-at-walt-disney-world/23624675/ |
