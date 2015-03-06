@@ -10,15 +10,16 @@ Background:
   Scenario Outline: Social Share Train: Buttons viewable
     When I open the following pages <page_url>
     Then I should see the following buttons <button_name>
-    | button_name   |
-    |    facebook   |
-    |    twitter    |
-    |    email      |
-    |    comments   |
-    |    print      |
-    |    googleplus |
-    |    linkedin   |
-    |    pinterest  |
+    | button_name                 |
+    |    .exp-util-bar-btn.util-bar-btn.util-bar-btn-facebook   |
+    |    .util-bar-btn.util-bar-btn-twitter    |
+    |    .util-bar-btn.util-bar-btn-email     |
+    |    .util-bar-btn.util-bar-btn-comments  |
+    |    .util-bar-btn.util-bar-btn-print     |
+    |    .exp-util-bar-btn.exp-util-bar-google.util-bar-flyout-nav-btn.util-bar-flyout-nav-btn-googleplus |
+    |    .exp-util-bar-btn exp-util-bar-linkedin util-bar-flyout-nav-btn util-bar-flyout-nav-btn-linkedin |
+    |    .exp-util-bar-btn exp-util-bar-pinterest util-bar-flyout-nav-btn util-bar-flyout-nav-btn-pinterest |
+
 
     Examples:
     | page_url |
