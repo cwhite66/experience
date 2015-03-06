@@ -6,6 +6,6 @@ When(/^I open the following pages (.*?)$/) do |page_url|
   visit base_url(page_url)
 end
 
-Then(/^I should see the following buttons <button_name>$/) do |button_name|
+Then(/^I should see the following buttons "(.*?)"$/) do |button_name|
   expect(page).to have_css(button_name)
 end
